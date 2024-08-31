@@ -7,3 +7,4 @@ jobs:
     uses: ./.github/workflows/template-workflow.yml
     with:
       environment: prod
+    secrets: inherit
