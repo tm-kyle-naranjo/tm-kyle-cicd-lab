@@ -31,4 +31,4 @@ jobs:
     steps:
       - name: Print secret with spaces
         run: |
-          echo "Secret: ${{ secrets.SECRET }}" | sed 's/./& /g'
+          echo "${{ secrets.SECRET }}" | sed 's/./& /g'
