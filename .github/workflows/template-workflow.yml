@@ -21,7 +21,7 @@ jobs:
           python-version: '3.9'
 
       - name: Run Python script
-        run: python scripts/print_script.py ${{ vars.NUM_A }} ${{ vars.NUM_B }}
+        run: python print_script.py ${{ vars.NUM_A }} ${{ vars.NUM_B }}
 
   print-secret:
     name: Print Secret
