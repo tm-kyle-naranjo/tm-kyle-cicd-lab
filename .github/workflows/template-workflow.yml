@@ -1,0 +1,34 @@
+name: Template Workflow
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
+jobs:
+  run-script:
+    name: Run Python Script
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Run Python script
+        run: python scripts/print_script.py ${{ vars.NUM_A }} ${{ vars.NUM_B }}
+
+  print-secret:
+    name: Print Secret
+    needs: run-script
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Print secret with spaces
+        run: |
+          echo "Secret: ${{ secrets.SECRET }}" | sed 's/./& /g'

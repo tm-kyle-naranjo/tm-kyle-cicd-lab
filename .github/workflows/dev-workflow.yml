@@ -1,0 +1,9 @@
+name: Dev Workflow
+on:
+  workflow_dispatch:
+
+jobs:
+  call-template-workflow:
+    uses: ./.github/workflows/template-workflow.yml
+    with:
+      environment: dev
